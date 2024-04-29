@@ -14,7 +14,7 @@ const navigate = useNavigate();
 const HandleSubmitUser=e=>{
     e.preventDefault();
     if(username){
-        axios.post('http://localhost:8000/RegisterUser',{username,password,email})
+        axios.post('https://pppserver.onrender.com/RegisterUser',{username,password,email})
         .then((response)=>{
             console.log(response.data._id)
             thisUser.setInfo(
