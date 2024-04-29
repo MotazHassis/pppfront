@@ -19,14 +19,14 @@ export default () => {
     // console.log(thisuser)
     const [newsocket, setNewSocket] = useState(null);
     const { id } = useParams()
-    const socket = io('http://localhost:8000',{withCredentials: true});
+    const socket = io('https://pppserver.onrender.com',{withCredentials: true});
     const updatemessages = updatemes => {
         setAllmessages(updatemes)
     }
     const scrollRef = React.useRef(null);
     const bottomMessages = React.useRef(null)
     const bringAllmessages=async()=>{
-        await axios.get('http://localhost:8000/allchat',{withCredentials: true})
+        await axios.get('https://pppserver.onrender.com/allchat',{withCredentials: true})
                     .then(res => {
                         setAllmessages(res.data)
                         console.log(socket)
@@ -64,7 +64,7 @@ export default () => {
         
         }
     const HandleSend= async (id,thismessage)=>{
-        await axios.post('http://localhost:8000/chat', { userid: id, messageContent: thismessage },{withCredentials: true})
+        await axios.post('https://pppserver.onrender.com/chat', { userid: id, messageContent: thismessage },{withCredentials: true})
         .then(async(res) => {
             sendmessagesio()
         })
@@ -79,7 +79,7 @@ export default () => {
 
     }
     const handleLogout =async ()=>{
-        await axios.get('http://localhost:8000/logout')
+        await axios.get('https://pppserver.onrender.com/logout')
             .then(res => {console.error(' logout done'
             )
             navigate('/')
