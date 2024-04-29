@@ -11,7 +11,7 @@ const [left,setleft]=useState(0)
 const [liveright,setliveright]=useState(0)
 const [liveleft,setliveleft]=useState(0)
 const navigate = useNavigate();
-const socket = io('http://localhost:8000',{withCredentials: true});
+const socket = io('https://pppserver.onrender.com',{withCredentials: true});
 
 const id='66301ed333673cf71878ec51'
 // const HandleSubmitwing=e=>{
@@ -29,7 +29,7 @@ const updatedata=(data)=>{
     setleft(data.left)
 }
 useEffect(() => {
-    axios.get('http://localhost:8000/wing/'+id)
+    axios.get('https://pppserver.onrender.com/wing/'+id)
             .then((response)=>{
                 console.log(response.data._id)
                 console.log(response.data.left)
@@ -57,7 +57,7 @@ const sendmdatasio= async ()=>{
 
     const HandleSubmitupdatewing=e=>{
         e.preventDefault();
-            axios.put('http://localhost:8000/update/'+id,{left,right})
+            axios.put('https://pppserver.onrender.com/update/'+id,{left,right})
             .then((response)=>{
                 console.log(response.data._id)
                 console.log('done')})
