@@ -11,7 +11,7 @@ const [left,setleft]=useState(0)
 const [liveright,setliveright]=useState(0)
 const [liveleft,setliveleft]=useState(0)
 const navigate = useNavigate();
-const socket = io('https://pppserver.onrender.com',{withCredentials: true});
+const socket = io('https://pppserver.onrender.com');
 
 const id='66301ed333673cf71878ec51'
 // const HandleSubmitwing=e=>{
