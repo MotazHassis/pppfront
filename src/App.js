@@ -7,9 +7,6 @@ import {
   Route,
   Link
 } from 'react-router-dom'
-import Registration from './components/Registration';
-import ChatPage from './components/ChatPage'
-import Login from './components/Login';
 import Wing from './components/Wing';
 function App() {
   return (
@@ -18,10 +15,7 @@ function App() {
         <h1>Mern Chat</h1>
       </div>
       <Routes>
-        <Route path="/wing" element={<Wing/>}/>
-        <Route path="/" element={<Login/>}/>
-        <Route path="/Registration" element={<Registration/>}/>
-        <Route path="/chat/:id"  element={<ChatPage/>}/>
+        <Route path="/" element={<Wing/>}/>
       </Routes>
     </div>
   );
