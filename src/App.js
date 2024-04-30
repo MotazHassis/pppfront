@@ -12,7 +12,7 @@ function App() {
   return (
     <div style={{maxWidth:'35rem'}} className="App container modal-content border-0 shadow">
       <div className="text-center bg-secondary border border-5 border-dark mt-2">
-        <h1>Mern Chat</h1>
+        <h1>بسم الله</h1>
       </div>
       <Routes>
         <Route path="/" element={<Wing/>}/>
