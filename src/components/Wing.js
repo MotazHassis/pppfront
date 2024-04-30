@@ -67,8 +67,8 @@ useEffect(() => {
         }
 return (
     <div className='border border-1 border-dark mt-3' >
-        <h3>Get Started right Now!</h3>
-        <h5>I want to start chatting with the name...</h5>
+        <h3>Lets start!</h3>
+       
         
         <h3>liveright: {right}</h3>
         <h3>liveleft: {left}</h3>
@@ -87,10 +87,32 @@ return (
         <h5>update</h5>
         <form className="mt-3 mb-3" onSubmit={HandleSubmitupdatewing}>
             <div>
-                <input className="mx-5" placeholder='right' type='number' onChange={e=>setright(e.target.value)} value={right} name='right'/>
+                <h2>Right Controller</h2>
+                <label htmlFor="right">Select Right Angle:</label>
+                <input type="range" id="right" name="right" min="0" max="180" 
+                onChange={(e)=>{
+                    setright(e.target.value)
+                    axios.put('https://pppserver.onrender.com/update/'+id,{left,right})
+                    .then((response)=>{console.log('done')})
+                    .catch((err)=>{
+                    console.log('fail sending data to backend')})
+                    }} 
+                    value={right} step="1"/>
+                <p>Right Angle Value: <span id="rightValue">{right}</span></p>
             </div>
             <div>
-                <input className="mx-5 mt-3 mb-2" placeholder='left' type='number' onChange={e=>setleft(e.target.value)} value={left} name='left'/>
+                <h2>Left Controller</h2>
+                <label htmlFor="left">Select Right Angle:</label>
+                <input type="range" id="left" name="left" min="0" max="180"
+                onChange={(e)=>{
+                    setleft(e.target.value)
+                    axios.put('https://pppserver.onrender.com/update/'+id,{left,right})
+                    .then((response)=>{console.log('done')})
+                    .catch((err)=>{
+                    console.log('fail sending data to backend')})
+                    }} 
+                value={left} step="1"/>
+                <p>Left Angle Value: <span id="leftValue">{left}</span></p>
             </div>
             <button className="btn btn-success" type='submit'>Registre</button>
         </form>
