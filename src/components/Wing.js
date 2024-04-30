@@ -11,7 +11,7 @@ const [left,setleft]=useState(0)
 const [liveright,setliveright]=useState(0)
 const [liveleft,setliveleft]=useState(0)
 const navigate = useNavigate();
-const socket = io('https://pppserver.onrender.com');
+// const socket = io('https://pppserver.onrender.com');
 
 const id='66301ed333673cf71878ec51'
 // const HandleSubmitwing=e=>{
@@ -24,10 +24,10 @@ const id='66301ed333673cf71878ec51'
 //             console.log('fail sending data to backend')})
 //     }
 
-const updatedata=(data)=>{
-    setright(data.right)
-    setleft(data.left)
-}
+// const updatedata=(data)=>{
+//     setright(data.right)
+//     setleft(data.left)
+// }
 useEffect(() => {
     axios.get('https://pppserver.onrender.com/wing/'+id)
             .then((response)=>{
@@ -41,19 +41,19 @@ useEffect(() => {
                 console.log('fail sending data to backend')})
 }, []);
 
-useEffect(() => {
-    socket.on('getwingdata', data => {
-        updatedata(data)
+// useEffect(() => {
+//     socket.on('getwingdata', data => {
+//         updatedata(data)
         
-    });
-    console.log('Is this running?');
-    return () => socket.disconnect(true);
-}, []);
+//     });
+//     console.log('Is this running?');
+//     return () => socket.disconnect(true);
+// }, []);
 
-const sendmdatasio= async ()=>{
-    await socket.emit('senddata', () => console.log('message updated'));
+// const sendmdatasio= async ()=>{
+//     await socket.emit('senddata', () => console.log('message updated'));
     
-    }
+//     }
 
     const HandleSubmitupdatewing=e=>{
         e.preventDefault();
@@ -61,7 +61,7 @@ const sendmdatasio= async ()=>{
             .then((response)=>{
                 console.log(response.data._id)
                 console.log('done')})
-                sendmdatasio()
+                // sendmdatasio()
             .catch((err)=>{
                 console.log('fail sending data to backend')})
         }
