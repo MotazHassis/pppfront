@@ -12,7 +12,7 @@ const [liveright,setliveright]=useState(0)
 const [liveleft,setliveleft]=useState(0)
 const navigate = useNavigate();
 // const socket = io('https://pppserver.onrender.com');
-
+const Base_url='https://pppserver.onrender.com/'
 const id='66301ed333673cf71878ec51'
 // const HandleSubmitwing=e=>{
 //     e.preventDefault();
@@ -29,13 +29,13 @@ const id='66301ed333673cf71878ec51'
 //     setleft(data.left)
 // }
 useEffect(() => {
-    axios.get('https://pppserver.onrender.com/wing/'+id)
+    axios.get(Base_url+'mywing/readings')
             .then((response)=>{
-                console.log(response.data._id)
-                console.log(response.data.left)
+                
                 setright(response.data.right)
                 setleft(response.data.left)
                 console.log(response.data.right)
+                console.log(response.data.left)
                 console.log('done')})
             .catch((err)=>{
                 console.log('fail sending data to backend')})
@@ -57,9 +57,8 @@ useEffect(() => {
 
     const HandleSubmitupdatewing=e=>{
         e.preventDefault();
-            axios.put('https://pppserver.onrender.com/update/'+id,{left,right})
+            axios.put(Base_url+'myupdate/readings',{left,right})
             .then((response)=>{
-                console.log(response.data._id)
                 console.log('done')})
                 // sendmdatasio()
             .catch((err)=>{
@@ -92,7 +91,7 @@ return (
                 <input type="range" id="right" name="right" min="0" max="180" 
                 onChange={(e)=>{
                     setright(e.target.value)
-                    axios.put('https://pppserver.onrender.com/update/'+id,{left,right})
+                    axios.put(Base_url+'myupdate/readings',{left,right})
                     .then((response)=>{console.log('done')})
                     .catch((err)=>{
                     console.log('fail sending data to backend')})
@@ -106,7 +105,7 @@ return (
                 <input type="range" id="left" name="left" min="0" max="180"
                 onChange={(e)=>{
                     setleft(e.target.value)
-                    axios.put('https://pppserver.onrender.com/update/'+id,{left,right})
+                    axios.put(Base_url+'myupdate/readings',{left,right})
                     .then((response)=>{console.log('done')})
                     .catch((err)=>{
                     console.log('fail sending data to backend')})
